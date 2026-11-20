@@ -1,3 +1,5 @@
+import { productCategories } from "./categories";
+
 export type Product = {
   id: string; name: string; slug: string; brand: string | null; model: string | null; category: string; image: string; images: string[]; originalFilename: string; originalPath: string; driveFileId: string; description: string; specifications: Record<string, string>; referencePrice: number | null; referencePriceHigh: number | null; priceSourceUrl: string | null; priceSourceName: string | null; priceResearchDate: string; priceVerification: string; priceNote: string; availability: string; identificationStatus: string; sellingPrice?: number; additionalOriginalFilenames?: string[];
 };
@@ -3106,7 +3108,7 @@ export const products: Product[] = [
   }
 ];
 
-export const categories = ["Chandeliers", "Pendant lights", "Wall lights", "Ceiling lights", "Floor & table lamps", "Solar & energy"];
+export const categories = productCategories.map(category => category.label);
 
 export function formatPrice(product: Pick<Product, "sellingPrice" | "referencePrice" | "referencePriceHigh">): string {
   const money = (amount: number) => new Intl.NumberFormat("en-NG", { style: "currency", currency: "NGN", maximumFractionDigits: 0 }).format(amount);
