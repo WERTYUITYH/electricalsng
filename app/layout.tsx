@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import { CartNotice } from "@/components/cart-controls";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { site } from "@/lib/site";
 import "./globals.css";
 import "./order.css";
+
+const inter = Inter({ subsets: ["latin"], display: "swap", variable: "--font-inter" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -15,5 +19,5 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en-NG"><body id="top" className="antialiased"><a href="#main" className="skip-link">Skip to content</a><Header /><main id="main">{children}</main><Footer /></body></html>;
+  return <html lang="en-NG"><body id="top" className={`${inter.variable} antialiased`}><a href="#main" className="skip-link">Skip to content</a><Header /><CartNotice /><main id="main">{children}</main><Footer /></body></html>;
 }

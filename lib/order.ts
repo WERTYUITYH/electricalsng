@@ -11,7 +11,7 @@ export function orderItemSummary(product: OrderProduct, quantity: number) {
 }
 
 export function orderWhatsAppMessage(receipt: Omit<OrderReceipt, "message">) {
-  const products = receipt.items.split("\n").map(item => item.split(" | ").slice(0, 2).join(" | ")).join("\n");
+  const products = receipt.items;
   return `Hello ElectricalsNG, I submitted order request ${receipt.reference} on your website.\n\nName: ${receipt.name}\n${products}\n\nFulfilment: ${receipt.fulfilment}${receipt.city ? ` (${receipt.city})` : ""}.\n\nPlease confirm the exact products, availability, final selling prices, delivery or collection arrangements, and the full amount payable. Please send the business owner's bank details and account name so I can make a bank transfer after we agree the final quotation. I have not made a payment. Please acknowledge my payment separately after it is received.`;
 }
 

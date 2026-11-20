@@ -1,3 +1,4 @@
+import { categorySlug } from "@/lib/categories";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
@@ -19,5 +20,5 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   const product = products.find(item => item.slug === slug);
   if (!product) notFound();
   const related = products.filter(item => item.category === product.category && item.id !== product.id).slice(0, 4);
-  return <><div className="container detail-page"><nav className="breadcrumbs" aria-label="Breadcrumb"><Link href="/">Home</Link><span>/</span><Link href="/products">Products</Link><span>/</span><span>{product.name}</span></nav><ProductDetail initialProduct={product} />{related.length > 0 && <section className="related-products"><div className="section-heading compact-heading"><div><Eyebrow>KEEP EXPLORING</Eyebrow><h2>Good company.</h2></div><Link href={`/products?category=${encodeURIComponent(product.category)}`} className="text-link">More {product.category.toLowerCase()} ↗</Link></div><FeaturedProducts initialProducts={related} /></section>}</div><FinalCTA /></>;
+  return <><div className="container detail-page"><nav className="breadcrumbs" aria-label="Breadcrumb"><Link href="/">Home</Link><span>/</span><Link href="/products">Products</Link><span>/</span><span>{product.name}</span></nav><ProductDetail initialProduct={product} />{related.length > 0 && <section className="related-products"><div className="section-heading compact-heading"><div><Eyebrow>KEEP EXPLORING</Eyebrow><h2>Good company.</h2></div><Link href={`/products?category=${categorySlug(product.category)}`} className="text-link">More {product.category.toLowerCase()} ↗</Link></div><FeaturedProducts initialProducts={related} /></section>}</div><FinalCTA /></>;
 }

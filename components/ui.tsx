@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { ArrowUpRight, MessageCircle, Zap } from "lucide-react";
+import { ArrowUpRight, Zap } from "lucide-react";
+import { WhatsAppIcon } from "@/components/whatsapp-icon";
 import { faqs, whatsappLink } from "@/lib/site";
 
 export function Wordmark({ light = false }: { light?: boolean }) {
@@ -11,7 +12,7 @@ export function Eyebrow({ children, light = false }: { children: React.ReactNode
 }
 
 export function WhatsAppButton({ children = "Talk to our team", message, className = "button button-dark" }: { children?: React.ReactNode; message?: string; className?: string }) {
-  return <a href={whatsappLink(message)} className={className} target="_blank" rel="noopener noreferrer"><MessageCircle size={17} />{children}<ArrowUpRight size={17} /></a>;
+  return <a href={whatsappLink(message)} className={className} target="_blank" rel="noopener noreferrer"><WhatsAppIcon size={17} />{children}<ArrowUpRight size={17} /></a>;
 }
 
 export function FinalCTA() {
